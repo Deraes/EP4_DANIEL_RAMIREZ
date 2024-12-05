@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    alert('Empieza el juego');
+alert('Elige una opción: piedra, papel o tijera');
+
+let puntajeJugador = 0;
+let puntajeEnemigo = 0;
+let terminar = false;
+
+while (!terminar) {
+    let resultado = 3;
+    while (resultado == 3) {
+        let jugador = prompt('¿Qué eliges? escribe piedra, papel y tijera').toLowerCase();
+        if (jugador == "piedra") {
+            alert('Has elegido piedra');
+            resultado = 0;
+        } else if (jugador == "papel") {
+            resultado = 1;
+            alert('Has elegido papel');
+        } else if (jugador == "tijera") {
+            resultado = 2;
+            alert('Has elegido tijera');
+        } else if (jugador == "terminar") {
+            alert('Juego terminado');
+            terminar = true;
+            break;
+        } else {
+            resultado = 3;
+            alert('Opción no válida, vuelve a intentarlo');
+        }
+    }
+    if (resultado < 3) {
+        let enemigo = Math.floor(Math.random() * 3)
+        if (enemigo == 0) {
+            alert('El enemigo ha elegido piedra');
+        } else if (enemigo == 1) {
+            alert('El enemigo ha elegido papel');
+        } else if (enemigo == 2) {
+            alert('El enemigo ha elegido tijera');
+        }
+
+        console.log(resultado, enemigo);
+
+        if (resultado == enemigo) {
+            alert('Empate');
+            puntajeJugador++;
+            puntajeEnemigo++;
+        } else if (resultado == 0 && enemigo == 2) {
+            puntajeJugador++;
+            alert('Has ganado');
+        } else if (resultado == 1 && enemigo == 0) {
+            puntajeJugador++;
+            alert('Has ganado');
+        } else if (resultado == 2 && enemigo == 1) {
+            puntajeJugador++;
+            alert('Has ganado');
+        } else {
+            puntajeEnemigo++;
+            alert('Has perdido');
+        } 
+        alert(' tu puntaje es: ' + puntajeJugador + ' y del enemigo es: ' + puntajeEnemigo)
+    }
+}
+
+</script>
+</html>
